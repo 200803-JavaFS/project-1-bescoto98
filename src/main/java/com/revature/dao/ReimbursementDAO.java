@@ -9,6 +9,10 @@ import com.revature.util.HibernateUtil;
 import com.revature.models.Reimbursement;
 
 public class ReimbursementDAO implements IReimbursementDAO {
+	
+	public ReimbursementDAO() {
+		super();
+	}
 
 	@Override
 	public List<Reimbursement> findAll() {

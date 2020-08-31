@@ -6,6 +6,10 @@ import com.revature.models.User;
 import com.revature.util.HibernateUtil;
 
 public class UserDAO implements IUserDAO {
+	
+	public UserDAO() {
+		super();
+	}
 
 	@Override
 	public User findById(int id) {

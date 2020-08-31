@@ -13,7 +13,6 @@ public class R_Type implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int rt_id;
 	
 	@Column(nullable=false)

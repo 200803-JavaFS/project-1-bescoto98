@@ -33,12 +33,12 @@ public class Reimbursement implements Serializable {
 	private String r_resolved;
 	private String r_description;
 	
-	@ManyToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-	@JoinColumn(name="ur_id")
+	@ManyToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+	@JoinColumn(name="r_author")
 	private User r_author;
 	
-	@ManyToMany(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
-	@JoinColumn(name="ur_id")
+	@ManyToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)
+	@JoinColumn(name="r_resolver")
 	private User r_resolver;
 	
 	@ManyToOne(fetch=FetchType.LAZY,cascade=CascadeType.ALL)

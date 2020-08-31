@@ -13,7 +13,6 @@ public class U_Role implements Serializable{
 	private static final long serialVersionUID = 1L;
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int ur_id;
 	
 	@Column(nullable=false)

@@ -19,7 +19,7 @@
 		<!-- this will print the sql queries made -->
 		<property name="hibernate.show_sql">true</property>
 		<property name="hibernate.format_sql">true</property>
-		<property name="hibernate.hbm2ddl.auto">create</property>
+		<property name="hibernate.hbm2ddl.auto">update</property>
 		
 		<mapping class="com.revature.models.Reimbursement"/>
 		<mapping class="com.revature.models.User"/>
