@@ -12,11 +12,11 @@ public class Driver {
 
 	public static void main(String[] args) {
 
-		List<Reimbursement> all = rd.findAll();
-		
-		for(Reimbursement r : all) {
-			System.out.println(r);
-		}
+//		List<Reimbursement> all = rd.findAll();
+//		
+//		for(Reimbursement r : all) {
+//			System.out.println(r);
+//		}
 		
 		
 

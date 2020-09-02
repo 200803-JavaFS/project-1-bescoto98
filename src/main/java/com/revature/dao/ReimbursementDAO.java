@@ -2,6 +2,8 @@ package com.revature.dao;
 
 import java.util.List;
 
+import org.hibernate.Transaction;
+
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import com.revature.util.HibernateUtil;
@@ -75,7 +77,9 @@ public class ReimbursementDAO implements IReimbursementDAO {
 		Session ses = HibernateUtil.getSession();
 		
 		try {
+			Transaction tx = ses.beginTransaction();
 			ses.save(r);
+			tx.commit();
 			return true;
 		}
 		catch(HibernateException e) {
