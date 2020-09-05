@@ -7,8 +7,9 @@ import org.hibernate.Transaction;
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
 import com.revature.util.HibernateUtil;
-
+import com.revature.models.R_Type;
 import com.revature.models.Reimbursement;
+import com.revature.models.Status;
 
 public class ReimbursementDAO implements IReimbursementDAO {
 	
@@ -62,7 +63,9 @@ public class ReimbursementDAO implements IReimbursementDAO {
 		Session ses = HibernateUtil.getSession();
 	
 		try {
+			Transaction tx = ses.beginTransaction();
 			ses.merge(r);
+			tx.commit();
 			return true;
 		}
 		catch(HibernateException e) {
@@ -89,5 +92,37 @@ public class ReimbursementDAO implements IReimbursementDAO {
 
 		return false;
 	}
+
+	@Override
+	public Status findStatus(int id) {
+		Session ses = HibernateUtil.getSession();
+		
+		try {
+			
+			Status s = ses.get(Status.class, id);
+			return s;
+		}
+		catch(HibernateException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+
+	@Override
+	public R_Type findReimbType(int id) {
+		Session ses = HibernateUtil.getSession();
+		
+		try {
+			R_Type rt = ses.get(R_Type.class, id);
+			return rt;
+		}
+		catch(HibernateException e) {
+			e.printStackTrace();
+		}
+		
+		return null;
+	}
+
 
 }
