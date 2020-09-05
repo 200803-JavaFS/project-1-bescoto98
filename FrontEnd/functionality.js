@@ -19,11 +19,12 @@ async function loginfunc(){
     });
 
   if(resp.status === 200){
-    console.log(resp);
-    document.getElementById("loginMessage").value = "Logged in";
+    // console.log(resp.json());
+    console.log("logged in");
+
   }
   //if successful which we Are assuming
-  window.location.replace("userPage.html");
+  // window.location.replace("userPage.html");
 }
 
 async function getAll(){

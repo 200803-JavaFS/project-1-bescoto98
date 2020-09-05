@@ -5,7 +5,8 @@ import java.io.IOException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.models.LoginDTO;
-import com.revature.services.LoginService;
+import com.revature.models.UserDTO;
+import com.revature.services.*;
 
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,7 @@ public class LoginController {
 	
 	private static LoginService ls = new LoginService();
 	private static ObjectMapper om = new ObjectMapper();
+	private static UserService us = new UserService();
 
 	public void login(HttpServletRequest req, HttpServletResponse res) throws IOException{
 		if(req.getMethod().equals("POST")) {
@@ -35,7 +37,11 @@ public class LoginController {
 				HttpSession ses = req.getSession();
 				ses.setAttribute("user", l);
 				ses.setAttribute("loggedin", true);
-				ses.setAttribute("user_role", ls.getUserType(l));
+				
+				// return userdto object
+				UserDTO userObj = us.findUser(l.username);
+				res.getWriter().println(om.writeValueAsString(userObj));
+				
 				
 				res.setStatus(200);
 				res.getWriter().println("Loggged in!");
