@@ -30,11 +30,43 @@ public class MasterServlet extends HttpServlet {
 		
 		res.setStatus(404);
 		
-//		final String URI = req.getRequestURI().replace("/AnimalsDemo/","");
-//		
-//		String[] portions = URI.split("/");
-//		
-//		System.out.println(Arrays.toString(portions));
+		final String URI = req.getRequestURI().replace("/project1/","");
+		
+		String[] portions = URI.split("/");
+		
+		System.out.println(Arrays.toString(portions));
+		
+		try {
+			
+			switch(portions[0]) {
+				case "login":
+					lc.login(req,res);
+					break;
+				case "reimbursement":
+					break;
+				case "logout":
+					lc.logout(req,res);
+					break;
+				
+			}
+			
+			
+			
+			
+			
+			
+			
+		} catch(NumberFormatException e) {
+			res.getWriter().print("Invalid location requested.");
+			res.setStatus(400);
+		}
+		
+	}
+	
+	@Override
+	protected void doPost(HttpServletRequest req,HttpServletResponse res) throws ServletException,IOException{
+		
+		doGet(req,res);
 		
 	}
 
