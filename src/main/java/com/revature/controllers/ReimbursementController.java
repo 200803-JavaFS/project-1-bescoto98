@@ -21,7 +21,7 @@ public class ReimbursementController {
 	
 	public void getReimbursement(HttpServletResponse res, int id) throws IOException{
 		om.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
-		Reimbursement r = rs.findById(id);
+		ReimbursementDTO r = rs.findById(id);
 		
 		if(r == null) {
 			res.setStatus(204);
@@ -35,7 +35,7 @@ public class ReimbursementController {
 	
 	public void getAllTickets(HttpServletResponse res) throws IOException{
 		om.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
-		List<Reimbursement> allTickets = rs.findAll();
+		List<ReimbursementDTO> allTickets = rs.findAll();
 		
 		res.getWriter().println(om.writeValueAsString(allTickets));
 		res.setStatus(200);
