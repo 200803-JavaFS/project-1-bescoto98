@@ -11,15 +11,17 @@
     </style>
   </head>
   <body>
-      <h1 class="centered">Login to access services</h1>
+      <h1 class="centered" id="loginMessage">Login to access services</h1>
 
       <div class="centered">
         <input id="username" type="text" placeholder="Enter username..." />
+      </div>
+      <div class="centered">
         <input id="password" type="password" placeholder="Enter password..." />
       </div>
 
       <div class="centered">
-        <button type="button" id="loginBtn">Login</button>
+        <button type="button" id="loginBtn" onclick="loginfunc()">Login</button>
       </div>
 
       <script src="login.js" charset="utf-8"></script>

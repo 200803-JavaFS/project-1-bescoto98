@@ -24,9 +24,13 @@ public class LoginService {
 			}
 		}
 		
-		return false;
+		return false;	
+	}
+	
+	public int getUserType(LoginDTO l) {
+		User temp = ud.findByUsername(l.username);
 		
-		
+		return temp.getU_user_role().getUr_id();
 	}
 
 }

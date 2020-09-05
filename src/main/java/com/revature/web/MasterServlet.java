@@ -47,15 +47,21 @@ public class MasterServlet extends HttpServlet {
 					break;
 				case "reimbursement":
 					
-//					if(req.getSession(false) != null && (boolean) req.getSession().getAttribute("loggedin")) {
+					if((boolean) req.getSession().getAttribute("loggedin") == false) {
+						res.setStatus(403);
+						res.getWriter().println("You must log in first.");	
+						break;
+					}
+					
 					if(req.getSession(false) != null) {
+					
 						if(req.getMethod().equals("GET")) { //single ticket requested
 							if(portions.length == 2) {
 								int id = Integer.parseInt(portions[1]);
 								rc.getReimbursement(res, id);
 							}
 							else if(portions.length == 1) { // all tickets requested
-								System.out.println("Requesting all tickets");
+								
 								rc.getAllTickets(res);
 							}
 						}

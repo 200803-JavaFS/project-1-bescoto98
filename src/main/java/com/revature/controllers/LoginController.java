@@ -28,7 +28,6 @@ public class LoginController {
 			}
 			
 			String body = new String(sb);
-//			System.out.println(body);
 			
 			LoginDTO l = om.readValue(body,LoginDTO.class);
 			
@@ -36,6 +35,8 @@ public class LoginController {
 				HttpSession ses = req.getSession();
 				ses.setAttribute("user", l);
 				ses.setAttribute("loggedin", true);
+				ses.setAttribute("user_role", ls.getUserType(l));
+				
 				res.setStatus(200);
 				res.getWriter().println("Loggged in!");
 			}
