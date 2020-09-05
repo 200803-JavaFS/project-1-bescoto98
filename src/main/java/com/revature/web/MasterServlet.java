@@ -42,10 +42,33 @@ public class MasterServlet extends HttpServlet {
 				case "login":
 					lc.login(req,res);
 					break;
-				case "reimbursement":
-					break;
 				case "logout":
 					lc.logout(req,res);
+					break;
+				case "reimbursement":
+					
+					if(req.getSession(false) != null && (boolean) req.getSession().getAttribute("loggedin")) {
+						if(req.getMethod().equals("GET")) { //single ticket requested
+							if(portions.length == 2) {
+								int id = Integer.parseInt(portions[1]);
+								rc.getReimbursement(res, id);
+							}
+						}
+						else if(portions.length == 1) { // all tickets requested
+							rc.getAllTickets(res);
+						}
+					}
+					else if(req.getMethod().equals("POST")) {
+						rc.addTicket(req, res);
+					}
+					else if(req.getMethod().equals("PUT")) {
+						rc.updateTicket(req, res);
+					}
+					else {
+						res.setStatus(403);
+						res.getWriter().println("You must log in first.");					
+					}
+					
 					break;
 				
 			}
@@ -68,6 +91,11 @@ public class MasterServlet extends HttpServlet {
 		
 		doGet(req,res);
 		
+	}
+	
+	@Override
+	protected void doPut(HttpServletRequest req,HttpServletResponse res) throws ServletException,IOException{
+		doGet(req,res);
 	}
 
 }

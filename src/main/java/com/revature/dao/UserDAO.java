@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import com.revature.models.Reimbursement;
 import com.revature.models.U_Role;
@@ -63,5 +64,33 @@ public class UserDAO implements IUserDAO {
 		
 		return null;
 	}
+
+	@Override
+	public boolean addUser(User u) {
+		Session ses = HibernateUtil.getSession();
+		
+		try {
+			Transaction tx = ses.beginTransaction();
+			ses.save(u);
+			tx.commit();
+			return true;
+		}
+		catch(HibernateException e) {
+			e.printStackTrace();
+		}
+		
+
+		return false;
+	}
+
+	@Override
+	public List<User> findAll() {
+		Session ses = HibernateUtil.getSession();
+		
+		List<User> allUsers = ses.createQuery("From User").list();
+		
+		return allUsers;
+	}
+
 
 }

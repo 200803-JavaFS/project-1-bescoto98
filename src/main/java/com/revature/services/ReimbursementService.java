@@ -17,9 +17,9 @@ public class ReimbursementService {
 		return r.findById(id);
 	}
 	
-	public List<Reimbursement> findByStatus(String s){
-		return r.findByStatus(s);
-	}
+//	public List<Reimbursement> findByStatus(String s){
+//		return r.findByStatus(s);
+//	}
 	
 	public boolean addReimbursement(Reimbursement ticket) {
 		return r.addReimbursement(ticket);
@@ -27,5 +27,13 @@ public class ReimbursementService {
 	
 	public boolean updateReimbursement(Reimbursement ticket) {
 		return r.updateReimbursement(ticket);
+	}
+	
+	public Status findStatusById(int id) {
+		return r.findStatus(id);
+	}
+	
+	public R_Type findType(int id) {
+		return r.findReimbType(id);
 	}
 }

@@ -28,8 +28,23 @@
 ////		System.out.println(rd.updateReimbursement(r));
 ////		
 //		
-//		User u = ud.findByUsername("bates32");
-//		System.out.println(u);
+////		User u = ud.findByUsername("bates32");
+////		System.out.println(u);
+//		
+////		User temp = new User();
+////		
+////		temp.setU_email("coopster@gmail.com");
+////		temp.setU_fn("Mabelle");
+////		temp.setU_ln("Cooper");
+////		temp.setU_password("4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2");
+////		temp.setU_username("mabelle33");
+////		temp.setU_user_role(ud.findUserRole(0));
+////		
+////		ud.addUser(temp);
+//
+////		System.out.println(ud.findAll());
+//		
+//		System.out.println(rd.findById(3));
 //	}
 //
 //}

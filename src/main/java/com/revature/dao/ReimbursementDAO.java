@@ -41,22 +41,22 @@ public class ReimbursementDAO implements IReimbursementDAO {
 		return null;
 	}
 
-	@Override
-	public List<Reimbursement> findByStatus(String s) {
-		Session ses = HibernateUtil.getSession();
-		
-		try {
-			List<Reimbursement> tickets = ses.createQuery("FROM Reimbursement WHERE r_status ="+s,Reimbursement.class).list();
-		
-		return tickets;
-		}
-		catch(HibernateException e) {
-			e.printStackTrace();
-		}
-		
-		return null;
-		
-	}
+//	@Override
+//	public List<Reimbursement> findByStatus(String s) {
+//		Session ses = HibernateUtil.getSession();
+//		
+//		try {
+//			List<Reimbursement> tickets = ses.createQuery("FROM Reimbursement WHERE r_status ="+s,Reimbursement.class).list();
+//		
+//		return tickets;
+//		}
+//		catch(HibernateException e) {
+//			e.printStackTrace();
+//		}
+//		
+//		return null;
+//		
+//	}
 
 	@Override
 	public boolean updateReimbursement(Reimbursement r) {
