@@ -3,36 +3,54 @@
   <head>
     <meta charset="utf-8">
     <title>Admin</title>
-    <style>
-    ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-  width: 200px;
-  background-color: #f1f1f1;
-}
-
-li a {
-  display: block;
-  color: #000;
-  padding: 8px 16px;
-  text-decoration: none;
-}
-
-/* Change the link color on hover */
-li a:hover {
-  background-color: #555;
-  color: white;
-}
-    </style>
+    <link rel="stylesheet" href="styling.css">
   </head>
   <body onload="getUsersName()">
-    <p id="greeting"></p>
-    <ul>
-      <li><a href="updateTicket.html">Update Ticket</a></li>
-      <!-- functions not redirects -->
-      <li><a href="login.html">Logout</a></li>
-    </ul>
+    <div class="centered">
+      <p id="greeting"></p>
+    </div>
+    <div class="centered">
+      <button type="button" id="showAllBtn" class="buttons" onclick="getAll()">Show reimbursements</button>
+      <br>
+      <br>
+      <button type="button" class="buttons">Logout</button>
+    </div>
+    <br>
+    <br>
+    <div class="centered">
+
+      <div class="boolChecks">
+
+        <input type="checkbox" id="pendingbool" onclick="showPending()">
+        <label for="pendingbool">Show Pending tickets</label>
+        <br>
+        <input type="checkbox" id="approvedbool">
+        <label for="approvedbool">Show Approved tickets</label>
+        <br>
+        <input type="checkbox" id="deniedbool">
+        <label for="deniedbool">Show Denied tickets</label>
+
+      </div>
+
+      <br>
+
+      <table id="allReimb">
+        <thead>
+          <tr>
+            <th>ID#</th>
+            <th>Amount</th>
+            <th>Submission Date</th>
+            <th>Resolution Date</th>
+            <th>Author</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="allReimbBody">
+        </tbody>
+      </table>
+
+    </div>
+
     <script src="functionality.js" charset="utf-8"></script>
   </body>
 </html>

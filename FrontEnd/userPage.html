@@ -3,10 +3,27 @@
   <head>
     <meta charset="utf-8">
     <title>User</title>
+    <link rel="stylesheet" href="styling.css">
   </head>
-  <body>
-    <p>congrats u made it</p>
-    <button type="button" id="getAllBtn" onclick="getAll()">show all</button>
+  <body onload="getUsersName()">
+
+    <div class="centered">
+      <p id="greeting"></p>
+    <table id="usrReimb">
+      <thead>
+        <tr>
+          <th>ID#</th>
+          <th>Amount</th>
+          <th>Submission Date</th>
+          <th>Resolution Date</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody id="usrReimbBody">
+      </tbody>
+    </table>
+  </div>
+
 
     <script src="functionality.js" charset="utf-8"></script>
   </body>
