@@ -4,6 +4,13 @@
     <meta charset="utf-8">
     <title>Admin</title>
     <link rel="stylesheet" href="styling.css">
+    <script>
+
+    function sendToUpdateTicket(){
+      window.location.replace("updateTicket.html");
+    }
+
+    </script>
   </head>
   <body onload="getUsersName()">
     <div class="centered">
@@ -11,9 +18,11 @@
     </div>
     <div class="centered">
       <button type="button" id="showAllBtn" class="buttons" onclick="getAll()">Show reimbursements</button>
-      <br>
-      <br>
-      <button type="button" class="buttons">Logout</button>
+      <br><br>
+      <button type="button" class="buttons" onclick="logout()">Logout</button>
+      <br><br>
+      <button type="button" class="buttons" onclick="sendToUpdateTicket()">Update ticket</button>
+
     </div>
     <br>
     <br>
@@ -49,13 +58,6 @@
         </tbody>
       </table>
 
-    </div>
-
-    <div>
-      <button type="button" id="testBtn" onclick="getResolvedDate()">get ticket</button>
-    </div>
-    <div>
-      <button type="button" id="updateRedirBtn" onclick="sendToUpdateTicket()">Click to update a ticket</button>
     </div>
 
 

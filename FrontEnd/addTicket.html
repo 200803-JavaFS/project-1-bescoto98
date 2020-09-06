@@ -4,6 +4,13 @@
     <meta charset="utf-8">
     <title>Add ticket</title>
     <link rel="stylesheet" href="styling.css">
+        <script>
+
+        function sendBackToHome(){
+          window.location.replace("userPage.html");
+        }
+
+        </script>
   </head>
   <body>
     <h3 class="centered">Add a ticket for reimbursement</h3>
@@ -31,9 +38,9 @@
 
 
   <div class="centered">
-    <button type="button" id="addBtn" onclick="addTicket()">Add Ticket</button>
-    <br>
-    <button type="button" id="cancelBtn" onclick="sendBackToHome()">Cancel</button>
+    <button type="button" id="addBtn" onclick="addTicket()" class="buttons">Add Ticket</button>
+    <br><br>
+    <button type="button" id="cancelBtn" onclick="sendBackToHome()" class="buttons">Cancel</button>
   </div>
 
   <script src="functionality.js" charset="utf-8"></script>

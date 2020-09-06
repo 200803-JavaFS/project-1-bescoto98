@@ -128,6 +128,13 @@ async function getUserDTO(){
   }
 }
 
+async function logout(){
+  let resp = await fetch(url+"logout",{
+    credentials:'include'
+  });
+  window.location.replace("login.html");
+}
+
 //return all reimbursement tickets
 async function getAll(){
 
@@ -224,22 +231,10 @@ async function getTicket(id){
   }
 }
 
-function sendToUpdateTicket(){
-  window.location.replace("updateTicket.html");
-}
-
 async function getUsersName(){
   console.log("getting name");
   let userdto = await getUserDTO();
   document.getElementById("greeting").innerText = "Hello " + userdto.name;
-}
-
-function sendToAddTicket(){
-  window.location.replace("addTicket.html");
-}
-
-function sendBackToHome(){
-  window.location.replace("userPage.html");
 }
 // employee functions
 async function showMyTickets(){
