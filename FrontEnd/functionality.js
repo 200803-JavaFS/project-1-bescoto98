@@ -170,7 +170,7 @@ async function getAll(){
   }
 }
 
-function getResolvedDate(){
+function getToday(){
   let d = new Date();
   let fullDay = d.getMonth() + "-" + d.getDate() + "-" + d.getFullYear();
   // console.log(fullDay);
@@ -182,7 +182,7 @@ async function updateTicket(){
 
   let ticket = await getTicket(r_id.value);
 
-  ticket.r_resolved = getResolvedDate();
+  ticket.r_resolved = getToday();
 
   let resolver = await getUserDTO();
   ticket.r_resolver = resolver.id;
@@ -232,4 +232,53 @@ async function getUsersName(){
   console.log("getting name");
   let userdto = await getUserDTO();
   document.getElementById("greeting").innerText = "Hello " + userdto.name;
+}
+
+function sendToAddTicket(){
+  window.location.replace("addTicket.html");
+}
+
+function sendBackToHome(){
+  window.location.replace("userPage.html");
+}
+// employee functions
+async function showMyTickets(){
+
+
+}
+
+async function addTicket(){
+
+  let amnt = document.getElementById("r_amount").value;
+  let description = document.getElementById("r_description").value;
+  let type = document.getElementById("r_type").value;
+
+  let submitted = getToday();
+
+  let status = 1;
+
+  let employee = await getUserDTO();
+  let author = employee.id;
+
+  let reimbursement = {
+    r_amnt : amnt,
+    r_description : description,
+    r_type : type,
+    r_submitted : submitted,
+    r_status : status,
+    r_author : author
+  }
+
+  console.log(reimbursement);
+
+  let resp = await fetch(url + "reimbursement",
+  {
+    method: 'POST',
+      body: JSON.stringify(reimbursement),
+      credentials: 'include'});
+
+  if(resp.status === 201){
+    console.log("reimbursement added");
+  }
+
 }

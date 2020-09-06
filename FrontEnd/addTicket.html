@@ -2,9 +2,40 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Add ticket</title>
+    <link rel="stylesheet" href="styling.css">
   </head>
   <body>
+    <h3 class="centered">Add a ticket for reimbursement</h3>
 
+
+  <div class="centered">
+    <label for="r_amount">Amount:</label>
+    <input type="number" class="form-control" value="0.0" id="r_amount">
+  </div>
+
+  <div class="centered">
+      <label for="r_type">Reimbursement type</label>
+      <select id="r_type" name="r_type" class="form-control">
+        <option value=1>LODGING</option>
+        <option value=2>TRAVEL</option>
+        <option value=3>FOOD</option>
+        <option value=4>OTHER</option>
+      </select>
+  </div>
+
+  <div class="centered">
+    <label for="r_description">Add a description</label><br>
+    <input type="text" class="form-control" id="r_description" required=true style="width: 200px;height: 100px;border-color:red;">
+  </div>
+
+
+  <div class="centered">
+    <button type="button" id="addBtn" onclick="addTicket()">Add Ticket</button>
+    <br>
+    <button type="button" id="cancelBtn" onclick="sendBackToHome()">Cancel</button>
+  </div>
+
+  <script src="functionality.js" charset="utf-8"></script>
   </body>
 </html>
