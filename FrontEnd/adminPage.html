@@ -24,10 +24,10 @@
         <input type="checkbox" id="pendingbool" onclick="showPending()">
         <label for="pendingbool">Show Pending tickets</label>
         <br>
-        <input type="checkbox" id="approvedbool">
+        <input type="checkbox" id="approvedbool" onclick="showApproved()">
         <label for="approvedbool">Show Approved tickets</label>
         <br>
-        <input type="checkbox" id="deniedbool">
+        <input type="checkbox" id="deniedbool" onclick="showDenied()">
         <label for="deniedbool">Show Denied tickets</label>
 
       </div>
@@ -50,6 +50,14 @@
       </table>
 
     </div>
+
+    <div>
+      <button type="button" id="testBtn" onclick="getResolvedDate()">get ticket</button>
+    </div>
+    <div>
+      <button type="button" id="updateRedirBtn" onclick="sendToUpdateTicket()">Click to update a ticket</button>
+    </div>
+
 
     <script src="functionality.js" charset="utf-8"></script>
   </body>

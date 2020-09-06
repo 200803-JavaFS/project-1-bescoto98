@@ -2,9 +2,37 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Update ticket</title>
+    <link rel="stylesheet" href="styling.css">
   </head>
   <body>
+    <h3 class="centered">Update ticket</h3>
+    <div class="centered" id="formdiv">
+      <div>
+        <label class="label" for="r_id">Ticket ID# </label>
+        <input type="text" id="r_id">
 
+      </div>
+
+      <div>
+        <br>Approve
+        <label class="switch" for="approveOrDeny">
+          <input type="checkbox" id="approveOrDeny">
+          <span class="slider"></span>
+        </label>
+        Deny
+      </div>
+
+      <div>
+        <button type="button" id="submitBtn" onclick="updateTicket()">Submit</button>
+      </div>
+
+      <div>
+        <button type="button" id="cancelBtn">Return</button>
+      </div>
+
+    </div>
+
+    <script src="functionality.js" charset="utf-8"></script>
   </body>
 </html>

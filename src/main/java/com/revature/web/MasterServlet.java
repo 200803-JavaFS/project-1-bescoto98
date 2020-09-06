@@ -71,12 +71,13 @@ public class MasterServlet extends HttpServlet {
 								rc.getAllTickets(res);
 							}
 						}
-					}
-					else if(req.getMethod().equals("POST")) {
-						rc.addTicket(req, res);
-					}
-					else if(req.getMethod().equals("PUT")) {
-						rc.updateTicket(req, res);
+						else if(req.getMethod().equals("POST")) {
+							rc.addTicket(req, res);
+						}
+						else if(req.getMethod().equals("PUT")) {
+							System.out.println("update request");
+							rc.updateTicket(req, res);
+						}
 					}
 					else {
 						res.setStatus(403);

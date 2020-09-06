@@ -36,10 +36,46 @@ function showPending(){
 
 function showApproved(){
 
+    let status = document.getElementById("approvedbool");
+    let tbl = document.getElementById("allReimb");
+    let rows = tbl.rows;
+
+    if(status.checked){
+        for(let i = 1; i < rows.length; i++){
+          if(rows[i].getElementsByTagName("td")[5].innerText.includes("PENDING")
+          || rows[i].getElementsByTagName("td")[5].innerText.includes("DENIED")){
+          rows[i].style.display = "none";
+        }
+      }
+    }
+    else {
+      for(let i = 1; i < rows.length; i++){
+        rows[i].style.display = "table-row";
+      }
+
+    }
+
 }
 
 function showDenied(){
+  let status = document.getElementById("deniedbool");
+  let tbl = document.getElementById("allReimb");
+  let rows = tbl.rows;
 
+  if(status.checked){
+      for(let i = 1; i < rows.length; i++){
+        if(rows[i].getElementsByTagName("td")[5].innerText.includes("APPROVED")
+        || rows[i].getElementsByTagName("td")[5].innerText.includes("PENDING")){
+        rows[i].style.display = "none";
+      }
+    }
+  }
+  else {
+    for(let i = 1; i < rows.length; i++){
+      rows[i].style.display = "table-row";
+    }
+
+  }
 }
 
 
@@ -134,6 +170,63 @@ async function getAll(){
   }
 }
 
+function getResolvedDate(){
+  let d = new Date();
+  let fullDay = d.getMonth() + "-" + d.getDate() + "-" + d.getFullYear();
+  // console.log(fullDay);
+  return fullDay;
+}
+
+async function updateTicket(){
+  let r_id = document.getElementById("r_id");
+
+  let ticket = await getTicket(r_id.value);
+
+  ticket.r_resolved = getResolvedDate();
+
+  let resolver = await getUserDTO();
+  ticket.r_resolver = resolver.id;
+
+  let status = document.getElementById("approveOrDeny");
+  if(status.checked){
+    ticket.r_status = 3;
+  }
+  else{
+    ticket.r_status = 2;
+  }
+
+  console.log(ticket);
+
+  let resp = await fetch(url + "reimbursement",
+    {
+      method:'PUT',
+      body:JSON.stringify(ticket),
+      credentials: "include"});
+
+  if(resp.status === 202){
+    console.log("added ticket");
+    //get rid of submit button
+  }
+
+
+}
+
+async function getTicket(id){
+  let resp = await fetch(url+"reimbursement/"+id,{
+    credentials: 'include'
+  });
+
+  if(resp.status === 200){
+    let data = await resp.json();
+
+    return data;
+    // console.log(data);
+  }
+}
+
+function sendToUpdateTicket(){
+  window.location.replace("updateTicket.html");
+}
 
 async function getUsersName(){
   console.log("getting name");
