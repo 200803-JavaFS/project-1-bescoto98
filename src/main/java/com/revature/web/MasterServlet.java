@@ -40,7 +40,13 @@ public class MasterServlet extends HttpServlet {
 			
 			switch(portions[0]) {
 				case "login":
-					lc.login(req,res);
+					if(req.getMethod().equals("GET")) {
+						lc.getUser(req,res);
+					}
+					else if(req.getMethod().equals("POST")) {
+						lc.login(req,res);
+					}
+					
 					break;
 				case "logout":
 					lc.logout(req,res);

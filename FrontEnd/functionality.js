@@ -1,5 +1,7 @@
 const url = "http://localhost:8080/project1/"
 
+// let userdto = null;
+
 async function loginfunc(){
 
   let u = document.getElementById("username").value;
@@ -19,12 +21,32 @@ async function loginfunc(){
     });
 
   if(resp.status === 200){
-    // console.log(resp.json());
-    console.log("logged in");
+
+    let userdto = await getUserDTO();
+
+    console.log(userdto);
+    if(userdto.role == 0){
+      window.location.replace("adminPage.html");
+    }
+    else if(userdto.role == 1){
+      window.location.replace("userPage.html");
+    }
 
   }
-  //if successful which we Are assuming
-  // window.location.replace("userPage.html");
+}
+
+async function getUserDTO(){
+  let getCred = await fetch(url + "login",
+  {
+    credentials: 'include'
+  });
+
+  if(getCred.status === 200){
+    let data = await getCred.json();
+    console.log(data);
+    return data;
+
+  }
 }
 
 async function getAll(){
@@ -37,4 +59,10 @@ async function getAll(){
     let data = await resp.json();
     console.log(data);
   }
+}
+
+async function getUsersName(){
+  console.log("getting name");
+  let userdto = await getUserDTO();
+  document.getElementById("greeting").innerText = "Hello " + userdto.name;
 }

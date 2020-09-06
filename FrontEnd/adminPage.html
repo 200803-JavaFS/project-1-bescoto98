@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
-    <title></title>
+    <title>Admin</title>
     <style>
     ul {
   list-style-type: none;
@@ -26,12 +26,13 @@ li a:hover {
 }
     </style>
   </head>
-  <body>
+  <body onload="getUsersName()">
+    <p id="greeting"></p>
     <ul>
       <li><a href="updateTicket.html">Update Ticket</a></li>
       <!-- functions not redirects -->
       <li><a href="login.html">Logout</a></li>
     </ul>
-
+    <script src="functionality.js" charset="utf-8"></script>
   </body>
 </html>

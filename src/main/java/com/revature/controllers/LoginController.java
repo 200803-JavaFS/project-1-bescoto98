@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
 import com.revature.models.LoginDTO;
 import com.revature.models.UserDTO;
 import com.revature.services.*;
@@ -40,8 +41,8 @@ public class LoginController {
 				
 				// return userdto object
 				UserDTO userObj = us.findUser(l.username);
-				res.getWriter().println(om.writeValueAsString(userObj));
-				
+//				res.getWriter().println(om.writeValueAsString(userObj));
+				ses.setAttribute("userdto", userObj);
 				
 				res.setStatus(200);
 				res.getWriter().println("Loggged in!");
@@ -69,6 +70,20 @@ public class LoginController {
 			res.setStatus(400);
 			res.getWriter().println("Must be logged in to logout.");
 		}
+		
+	}
+
+	public void getUser(HttpServletRequest req, HttpServletResponse res) throws IOException{
+		HttpSession ses = req.getSession();
+		UserDTO temp = (UserDTO) ses.getAttribute("userdto");
+		
+		om.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
+		
+		String json = om.writeValueAsString(temp);
+		
+		res.setStatus(200);
+		res.getWriter().println(json);
+		
 		
 	}
 
