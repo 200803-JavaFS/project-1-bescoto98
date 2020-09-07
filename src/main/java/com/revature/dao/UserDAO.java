@@ -46,6 +46,9 @@ public class UserDAO implements IUserDAO {
 		catch(HibernateException e) {
 			e.printStackTrace();
 		}
+		catch(Exception e) {
+			return null;
+		}
 		
 		return null;
 	}
