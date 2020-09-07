@@ -8,7 +8,6 @@ public interface IReimbursementDAO {
 	
 	public List<Reimbursement> findAll();
 	public Reimbursement findById(int id);
-//	public List<Reimbursement> findByStatus(String s);
 	public boolean updateReimbursement(Reimbursement r);
 	public boolean addReimbursement(Reimbursement r);
 	public Status findStatus(int id);

@@ -46,16 +46,6 @@ public class ReimbursementController {
 		res.setStatus(200);
 	}
 	
-//	public void getByStatus(HttpServletResponse res, String status) throws IOException{
-//		
-//		//should come in verified that the response is of a correct type for the db
-//		
-//		List<Reimbursement> specTickets = rs.findByStatus(status);
-//		
-//		res.getWriter().println(om.writeValueAsString(specTickets));
-//		res.setStatus(200);
-//	}
-	
 	public void addTicket(HttpServletRequest req, HttpServletResponse res) throws IOException{
 		BufferedReader reader = req.getReader();
 		
@@ -73,7 +63,6 @@ public class ReimbursementController {
 		ReimbursementDTO rdto = om.readValue(body, ReimbursementDTO.class);
 		
 		// ticket does not exist yet
-		
 		Reimbursement r = new Reimbursement();
 		
 		
@@ -115,7 +104,6 @@ public class ReimbursementController {
 		ReimbursementDTO rdto = om.readValue(body, ReimbursementDTO.class);
 		
 		// ticket already exists
-		
 		Reimbursement r = new Reimbursement();
 		
 		r.setR_id(rdto.r_id);

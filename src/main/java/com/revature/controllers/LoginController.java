@@ -47,7 +47,6 @@ public class LoginController {
 				
 				// return userdto object
 				UserDTO userObj = us.findUser(l.username);
-//				res.getWriter().println(om.writeValueAsString(userObj));
 				ses.setAttribute("userdto", userObj);
 				
 				res.setStatus(200);

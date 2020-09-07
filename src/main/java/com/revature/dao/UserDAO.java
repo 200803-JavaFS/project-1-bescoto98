@@ -54,21 +54,6 @@ public class UserDAO implements IUserDAO {
 	}
 
 	@Override
-	public U_Role findUserRole(int id) {
-		Session ses = HibernateUtil.getSession();
-		
-		try {
-			U_Role ur = ses.get(U_Role.class, id);
-			return ur;
-		}
-		catch(HibernateException e) {
-			e.printStackTrace();
-		}
-		
-		return null;
-	}
-
-	@Override
 	public boolean addUser(User u) {
 		Session ses = HibernateUtil.getSession();
 		

@@ -1,5 +1,6 @@
 const url = "http://localhost:8080/project1/"
 
+/** HELPER FUNCTIONS **/
 function translateStatus(s){
   if(s == 1){
     return "PENDING";
@@ -28,7 +29,18 @@ function translateType(t){
 
 }
 
+function getToday(){
+
+  let d = new Date();
+  let fullDay = d.getMonth() + "-" + d.getDate() + "-" + d.getFullYear();
+
+  return fullDay;
+}
+/** END HELPER FUNCTIONS **/
+
+/** FILTER FUNCTIONS **/
 function showPending(){
+
   let status = document.getElementById("pendingbool");
   let tbl = document.getElementById("allReimb");
   let rows = tbl.rows;
@@ -93,8 +105,10 @@ function showDenied(){
 
   }
 }
+/** END FILTER FUNCTIONS**/
 
 
+/** SHARED FUNCTIONS **/
 // function to kick off login services
 async function loginfunc(){
 
@@ -118,7 +132,6 @@ async function loginfunc(){
 
     let userdto = await getUserDTO();
 
-    console.log(userdto);
     if(userdto.role == 0){
       window.location.replace("adminPage.html");
     }
@@ -144,7 +157,7 @@ async function getUserDTO(){
 
   if(getCred.status === 200){
     let data = await getCred.json();
-    console.log(data);
+
     return data;
 
   }
@@ -157,12 +170,75 @@ async function logout(){
   window.location.replace("login.html");
 }
 
+async function getUsersName(){
+  let userdto = await getUserDTO();
+  document.getElementById("greeting").innerText = "Hello, " + userdto.name;
+}
+
+async function getTicket(id){
+  let resp = await fetch(url+"reimbursement/"+id,{
+    credentials: 'include'
+  });
+
+  if(resp.status === 200){
+    let data = await resp.json();
+
+    return data;
+  }
+}
+
+async function showMyTickets(){
+
+  if(document.contains(document.getElementById("errorMsg"))){
+    document.getElementById("errorMsg").remove();
+  }
+  
+  let tickId = document.getElementById("ticketIdNum").value;
+  let ticket = await getTicket(tickId);
+
+  let user = await getUserDTO();
+
+  if(ticket == null){
+    let errorMsg = document.createElement("div");
+    errorMsg.innerHTML = '<h3 class="centered" style="color:red;" id="errorMsg">Unable to access that ticket</h3>';
+    document.body.appendChild(errorMsg);
+
+    return;
+  }
+
+  if(ticket.r_author == user.id || user.role == 0){
+
+    // window.location.replace("ticketPreview.html");
+    let t = document.getElementById("ticketPreview");
+    t.hidden=false;
+
+    document.getElementById("idNum").innerHTML = "Ticket ID#" + ticket.r_id;
+    document.getElementById("amount").innerHTML = "$" + ticket.r_amnt;
+    document.getElementById("submitted").innerHTML = "Submission Date: " + ticket.r_submitted;
+    if(ticket.r_resolved !=  null){
+      document.getElementById("resolved").innerHTML = "Resolution Date: " + ticket.r_resolved;
+      document.getElementById("resolver").innerHTML = "Resolved by Admin #"+ticket.r_resolver;
+    }
+    else{
+      document.getElementById("resolved").innerHTML = "Resolution Date: Ticket not resolved yet";
+      document.getElementById("resolver").innerHTML = "Resolved by: Ticket not resolved yet";
+    }
+
+    document.getElementById("status").innerHTML = "Ticket status: " + translateStatus(ticket.r_status);
+    document.getElementById("type").innerHTML = "Reimbursement type: " + translateType(ticket.r_type);
+    document.getElementById("description").innerHTML = "Description: " + ticket.r_description;
+
+  }
+
+
+}
+
+/** END SHARED FUNCTIONS **/
+
+/** ADMIN FUNCTIONS **/
+
 //return all reimbursement tickets
 async function getAll(){
-
-  // document.getElementById("boolChecks").hidden = false;
-  // document.getElementById("allReimb").hideen = false;
-
 
   let resp = await fetch(url + "reimbursement",{
     credentials:'include'
@@ -170,10 +246,6 @@ async function getAll(){
 
   if(resp.status === 200){
     let data = await resp.json();
-    console.log(data);
-
-    // let btn = document.getElementById("showAllBtn");
-    // btn.style.display = "none";
 
     let index = 1;
 
@@ -206,13 +278,6 @@ async function getAll(){
   }
 }
 
-function getToday(){
-  let d = new Date();
-  let fullDay = d.getMonth() + "-" + d.getDate() + "-" + d.getFullYear();
-  // console.log(fullDay);
-  return fullDay;
-}
-
 async function updateTicket(){
   document.getElementById("submitBtn").hidden = true;
   let r_id = document.getElementById("r_id");
@@ -232,8 +297,6 @@ async function updateTicket(){
     ticket.r_status = 2;
   }
 
-  console.log(ticket);
-
   let resp = await fetch(url + "reimbursement",
     {
       method:'PUT',
@@ -241,7 +304,7 @@ async function updateTicket(){
       credentials: "include"});
 
   if(resp.status === 202){
-    console.log("updated ticket");
+
     let msg = document.getElementById("message");
     msg.style = "color:green;";
     msg.innerHTML = "Ticket successfully updated!";
@@ -251,71 +314,9 @@ async function updateTicket(){
 
 }
 
-async function getTicket(id){
-  let resp = await fetch(url+"reimbursement/"+id,{
-    credentials: 'include'
-  });
+/** END ADMIN FUNCTIONS **/
 
-  if(resp.status === 200){
-    let data = await resp.json();
-
-    return data;
-    // console.log(data);
-  }
-}
-
-async function getUsersName(){
-  console.log("getting name");
-  let userdto = await getUserDTO();
-  document.getElementById("greeting").innerText = "Hello " + userdto.name;
-}
-// employee functions
-async function showMyTickets(){
-
-  let tickId = document.getElementById("ticketIdNum").value;
-  let ticket = await getTicket(tickId);
-  console.log(ticket);
-  let user = await getUserDTO();
-
-  if(ticket == null){
-    let errorMsg = document.createElement("div");
-    errorMsg.innerHTML = '<h3 class="centered" style="color:red;" id="errorMsg">Unable to access that ticket</h3>';
-    document.body.appendChild(errorMsg);
-    console.log("doesn't exist");
-    return;
-  }
-
-  if(ticket.r_author == user.id || user.role == 0){
-
-    if(document.contains(document.getElementById("errorMsg"))){
-      document.getElementById("errorMsg").remove();
-    }
-
-    // window.location.replace("ticketPreview.html");
-    let t = document.getElementById("ticketPreview");
-    t.hidden=false;
-
-    document.getElementById("idNum").innerHTML = "Ticket ID#" + ticket.r_id;
-    document.getElementById("amount").innerHTML = "$" + ticket.r_amnt;
-    document.getElementById("submitted").innerHTML = "Submission Date: " + ticket.r_submitted;
-    if(ticket.r_resolved !=  null){
-      document.getElementById("resolved").innerHTML = "Resolution Date: " + ticket.r_resolved;
-      document.getElementById("resolver").innerHTML = "Resolved by Admin #"+ticket.r_resolver;
-    }
-    else{
-      document.getElementById("resolved").innerHTML = "Resolution Date: Ticket not resolved yet";
-      document.getElementById("resolver").innerHTML = "Resolved by: Ticket not resolved yet";
-    }
-
-    document.getElementById("status").innerHTML = "Ticket status: " + translateStatus(ticket.r_status);
-    document.getElementById("type").innerHTML = "Reimbursement type: " + translateType(ticket.r_type);
-    document.getElementById("description").innerHTML = "Description: " + ticket.r_description;
-
-  }
-
-
-}
-
+/** EMPLOYEE FUNCTIONS **/
 async function addTicket(){
 
   document.getElementById("addBtn").hidden = true;
@@ -340,8 +341,6 @@ async function addTicket(){
     r_author : author
   }
 
-  console.log(reimbursement);
-
   let resp = await fetch(url + "reimbursement",
   {
     method: 'POST',
@@ -349,10 +348,11 @@ async function addTicket(){
       credentials: 'include'});
 
   if(resp.status === 201){
-    console.log("reimbursement added");
     let msg = document.getElementById("message");
     msg.style = "color:green;";
     msg.innerHTML = "Ticket successfully added!";
   }
 
 }
+
+/** END EMPLOYEE FUNCTIONS **/
