@@ -1,2 +1,53 @@
 2020-09-07 10:30:44 INFO  LoginService:27 - Logged in: mabelle33
 2020-09-07 10:38:20 INFO  LoginController:43 - Logged in: mabelle33
+2020-09-07 11:51:04 INFO  LoginController:43 - Logged in: jack56
+2020-09-07 11:53:02 INFO  LoginController:43 - Logged in: jack56
+2020-09-07 12:10:20 INFO  LoginController:43 - Logged in: jack56
+2020-09-07 12:11:12 INFO  LoginController:43 - Logged in: jack56
+2020-09-07 12:13:49 INFO  LoginController:43 - Logged in: jack56
+2020-09-07 12:20:23 INFO  LoginController:43 - Logged in: jack56
+2020-09-07 12:22:08 INFO  LoginController:43 - Logged in: mabelle33
+2020-09-07 12:26:13 INFO  LoginController:43 - Logged in: mabelle33
+2020-09-07 12:27:56 INFO  LoginController:43 - Logged in: mabelle33
+2020-09-07 12:33:57 INFO  LoginController:43 - Logged in: mabelle33
+2020-09-07 12:35:11 INFO  LoginController:43 - Logged in: mabelle33
+2020-09-07 12:36:47 INFO  LoginController:43 - Logged in: mabelle33
+2020-09-07 12:38:32 INFO  LoginController:43 - Logged in: jack56
+2020-09-07 12:38:54 INFO  ReimbursementController:93 - Ticket created: Reimbursement [r_id=6, r_amnt=200.0, r_submitted=8-7-2020, r_resolved=null, r_description=I want a gamer chair for my office thanks, r_author=User [u_id=1, u_username=jack56, u_password=4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2, u_fn=Max, u_ln=Jackson, u_email=jackson@gmail.com, u_user_role=U_Role [ur_id=1, ur_description=EMPLOYEE]], r_resolver=null, r_status=Status [s_id=1, s_description=PENDING], r_type=R_Type [rt_id=4, rt_type=OTHER]]
+2020-09-07 12:39:25 INFO  LoginController:43 - Logged in: mabelle33
+2020-09-07 12:40:00 INFO  ReimbursementController:131 - Request to update ticket: Reimbursement [r_id=6, r_amnt=200.0, r_submitted=8-7-2020, r_resolved=8-7-2020, r_description=I want a gamer chair for my office thanks, r_author=User [u_id=1, u_username=jack56, u_password=4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2, u_fn=Max, u_ln=Jackson, u_email=jackson@gmail.com, u_user_role=U_Role [ur_id=1, ur_description=EMPLOYEE]], r_resolver=User [u_id=4, u_username=mabelle33, u_password=4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2, u_fn=Mabelle, u_ln=Cooper, u_email=coopster@gmail.com, u_user_role=U_Role [ur_id=0, ur_description=ADMIN]], r_status=Status [s_id=2, s_description=APPROVED], r_type=R_Type [rt_id=4, rt_type=OTHER]]
+2020-09-07 12:40:00 INFO  ReimbursementController:136 - Ticket successfully updated: Reimbursement [r_id=6, r_amnt=200.0, r_submitted=8-7-2020, r_resolved=8-7-2020, r_description=I want a gamer chair for my office thanks, r_author=User [u_id=1, u_username=jack56, u_password=4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2, u_fn=Max, u_ln=Jackson, u_email=jackson@gmail.com, u_user_role=U_Role [ur_id=1, ur_description=EMPLOYEE]], r_resolver=User [u_id=4, u_username=mabelle33, u_password=4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2, u_fn=Mabelle, u_ln=Cooper, u_email=coopster@gmail.com, u_user_role=U_Role [ur_id=0, ur_description=ADMIN]], r_status=Status [s_id=2, s_description=APPROVED], r_type=R_Type [rt_id=4, rt_type=OTHER]]
+2020-09-07 12:41:44 INFO  LoginController:43 - Logged in: mabelle33
+2020-09-07 12:43:54 INFO  LoginController:43 - Logged in: mabelle33
+2020-09-07 12:46:02 INFO  LoginController:43 - Logged in: mabelle33
+2020-09-07 12:53:06 INFO  LoginController:43 - Logged in: jack56
+2020-09-07 12:53:40 INFO  ReimbursementController:93 - Ticket created: Reimbursement [r_id=7, r_amnt=500.0, r_submitted=8-7-2020, r_resolved=null, r_description=Went to convention for company., r_author=User [u_id=1, u_username=jack56, u_password=4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2, u_fn=Max, u_ln=Jackson, u_email=jackson@gmail.com, u_user_role=U_Role [ur_id=1, ur_description=EMPLOYEE]], r_resolver=null, r_status=Status [s_id=1, s_description=PENDING], r_type=R_Type [rt_id=2, rt_type=TRAVEL]]
+2020-09-07 12:56:17 INFO  LoginController:43 - Logged in: mabelle33
+2020-09-07 12:56:32 INFO  ReimbursementController:131 - Request to update ticket: Reimbursement [r_id=7, r_amnt=500.0, r_submitted=8-7-2020, r_resolved=8-7-2020, r_description=Went to convention for company., r_author=User [u_id=1, u_username=jack56, u_password=4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2, u_fn=Max, u_ln=Jackson, u_email=jackson@gmail.com, u_user_role=U_Role [ur_id=1, ur_description=EMPLOYEE]], r_resolver=User [u_id=4, u_username=mabelle33, u_password=4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2, u_fn=Mabelle, u_ln=Cooper, u_email=coopster@gmail.com, u_user_role=U_Role [ur_id=0, ur_description=ADMIN]], r_status=Status [s_id=3, s_description=DENIED], r_type=R_Type [rt_id=2, rt_type=TRAVEL]]
+2020-09-07 12:56:32 INFO  ReimbursementController:136 - Ticket successfully updated: Reimbursement [r_id=7, r_amnt=500.0, r_submitted=8-7-2020, r_resolved=8-7-2020, r_description=Went to convention for company., r_author=User [u_id=1, u_username=jack56, u_password=4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2, u_fn=Max, u_ln=Jackson, u_email=jackson@gmail.com, u_user_role=U_Role [ur_id=1, ur_description=EMPLOYEE]], r_resolver=User [u_id=4, u_username=mabelle33, u_password=4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2, u_fn=Mabelle, u_ln=Cooper, u_email=coopster@gmail.com, u_user_role=U_Role [ur_id=0, ur_description=ADMIN]], r_status=Status [s_id=3, s_description=DENIED], r_type=R_Type [rt_id=2, rt_type=TRAVEL]]
+2020-09-07 12:57:22 INFO  LoginController:43 - Logged in: mabelle33
+2020-09-07 12:58:00 INFO  LoginController:43 - Logged in: jack56
+2020-09-07 12:59:32 INFO  LoginController:43 - Logged in: jack56
+2020-09-07 13:09:12 INFO  LoginController:43 - Logged in: jack56
+2020-09-07 13:10:05 INFO  LoginController:43 - Logged in: mabelle33
+2020-09-07 13:26:18 INFO  LoginController:43 - Logged in: mabelle33
+2020-09-07 13:28:02 INFO  LoginController:43 - Logged in: mabelle33
+2020-09-07 13:29:04 INFO  LoginController:43 - Logged in: mabelle33
+2020-09-07 13:29:53 INFO  LoginController:43 - Logged in: mabelle33
+2020-09-07 13:35:17 INFO  LoginController:43 - Logged in: mabelle33
+2020-09-07 13:38:24 INFO  LoginController:43 - Logged in: jack56
+2020-09-07 13:39:47 INFO  LoginController:43 - Logged in: jack56
+2020-09-07 13:43:32 INFO  LoginController:43 - Logged in: jack56
+2020-09-07 13:44:15 INFO  LoginController:43 - Logged in: jack56
+2020-09-07 13:45:27 INFO  LoginController:43 - Logged in: jack56
+2020-09-07 13:46:43 INFO  LoginController:43 - Logged in: jack56
+2020-09-07 13:47:10 INFO  LoginController:43 - Logged in: jack56
+2020-09-07 13:49:15 INFO  LoginController:43 - Logged in: jack56
+2020-09-07 13:52:11 INFO  LoginController:43 - Logged in: jack56
+2020-09-07 13:54:44 INFO  LoginController:43 - Logged in: jack56
+2020-09-07 13:55:03 INFO  LoginController:43 - Logged in: mabelle33
+2020-09-07 13:57:06 INFO  LoginController:43 - Logged in: jack56
+2020-09-07 14:02:22 INFO  LoginController:43 - Logged in: jack56
+2020-09-07 14:03:57 INFO  LoginController:43 - Logged in: mabelle33
+2020-09-07 14:09:28 INFO  LoginController:43 - Logged in: jack56
+2020-09-07 14:09:54 INFO  LoginController:43 - Logged in: mabelle33
