@@ -7,6 +7,10 @@
 
 }
 
+.ticketStyle{
+  border-bottom: 1px dashed black;
+}
+
 .centered {
   text-align: center;
   margin:auto;

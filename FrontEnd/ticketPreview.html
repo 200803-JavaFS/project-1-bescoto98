@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="styling.css">
+    <script>
+      function sendBackToHome(){
+          window.location.replace("userPage.html");
+      }
+      </script>
+  </head>
+  <body>
+    <!-- add background or something jesus christ -->
+    <div class="centered" style="border: 1px solid black">
+    <p id="idNum" class="ticketStyle">ticket id</p>
+    <p id="amount" class="ticketStyle">ticket amount</p>
+    <p id="submitted" class="ticketStyle">ticket submitted</p>
+    <p id="resolved" class="ticketStyle">resolved</p>
+    <p id="author" class="ticketStyle">ticket author</p>
+    <p id="resolver" class="ticketStyle">ticket resolver</p>
+    <p id="status" class="ticketStyle">ticket status</p>
+    <p id="type" class="ticketStyle">ticket type</p>
+    <p id="description" class="ticketStyle">ticket description</p>
+    </div>
+    <div class="centered">
+      <button type="button" id="returnBtn" onclick="sendBackToHome()" class="buttons">Return</button>
+    </div>
+    <script src="functionality.js" charset="utf-8"></script>
+  </body>
+</html>
