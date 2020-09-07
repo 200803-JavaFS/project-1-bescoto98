@@ -6,12 +6,15 @@ import com.revature.models.*;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
 public class ReimbursementService {
 	
 	private static IReimbursementDAO r = new ReimbursementDAO();
+	private static final Logger log = LogManager.getLogger(ReimbursementService.class);
 	
 	public List<ReimbursementDTO> findAll(){
-//		return r.findAll();
 		
 		List<Reimbursement> allTickets = r.findAll();
 		
@@ -66,16 +69,26 @@ public class ReimbursementService {
 		return ticket;
 	}
 	
-//	public List<Reimbursement> findByStatus(String s){
-//		return r.findByStatus(s);
-//	}
 	
 	public boolean addReimbursement(Reimbursement ticket) {
-		return r.addReimbursement(ticket);
+//		return r.addReimbursement(ticket);
+		if(r.addReimbursement(ticket)) {
+			log.info("Ticket added: " + ticket);
+			return true;
+		}
+		log.error("Unable to add ticket:" + ticket);
+		return false;
 	}
 	
 	public boolean updateReimbursement(Reimbursement ticket) {
-		return r.updateReimbursement(ticket);
+//		return r.updateReimbursement(ticket);
+		log.info("Request to update ticket: " + r.findById(ticket.getR_id()));
+		if(r.updateReimbursement(ticket)) {
+			log.info("Ticket updated: " + ticket);
+			return true;
+		}
+		log.error("Unable to update ticket:" + ticket);
+		return false;
 	}
 	
 	public Status findStatusById(int id) {
