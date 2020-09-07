@@ -14,13 +14,27 @@ h1,h3{
   width: 100%;
   max-width:200px;
   margin: 5px;
+  background-color: #99d6ff;
+  border-color: blue;
   /* position: fixed; */
   /* left:0px; */
 
 }
 
+#ticketIdNum{
+  border-color: blue;
+  padding: 10px;
+  width:60px;
+  box-shadow: 2px 2px;
+
+}
+
+body{
+  background-color: #ccebff;
+}
+
 #ticketPreview{
-   border: 1px solid black; 
+   border: 1px solid black;
    box-shadow: 2px 2px;
 }
 
@@ -42,7 +56,7 @@ table, th{
 }
 
 th{
-  background-color: #bfbfbf;
+  background-color: #99d6ff;
 }
 
 th,td{
