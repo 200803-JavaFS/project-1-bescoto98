@@ -127,6 +127,12 @@ async function loginfunc(){
     }
 
   }
+  else if (resp.status === 401){
+    let lMsg = document.getElementById("loginMessage");
+    lMsg.style = "background-color:#ff9999;";
+    lMsg.innerHTML = "Invalid login";
+
+  }
 }
 
 // will return an object with most important user information
@@ -208,6 +214,7 @@ function getToday(){
 }
 
 async function updateTicket(){
+  document.getElementById("submitBtn").hidden = true;
   let r_id = document.getElementById("r_id");
 
   let ticket = await getTicket(r_id.value);
@@ -234,8 +241,11 @@ async function updateTicket(){
       credentials: "include"});
 
   if(resp.status === 202){
-    console.log("added ticket");
-    //get rid of submit button
+    console.log("updated ticket");
+    let msg = document.getElementById("message");
+    msg.style = "color:green;";
+    msg.innerHTML = "Ticket successfully updated!";
+
   }
 
 
@@ -266,7 +276,21 @@ async function showMyTickets(){
   let ticket = await getTicket(tickId);
   console.log(ticket);
   let user = await getUserDTO();
+
+  if(ticket == null){
+    let errorMsg = document.createElement("div");
+    errorMsg.innerHTML = '<h3 class="centered" style="color:red;" id="errorMsg">Unable to access that ticket</h3>';
+    document.body.appendChild(errorMsg);
+    console.log("doesn't exist");
+    return;
+  }
+
   if(ticket.r_author == user.id || user.role == 0){
+
+    if(document.contains(document.getElementById("errorMsg"))){
+      document.getElementById("errorMsg").remove();
+    }
+
     // window.location.replace("ticketPreview.html");
     let t = document.getElementById("ticketPreview");
     t.hidden=false;
@@ -293,6 +317,8 @@ async function showMyTickets(){
 }
 
 async function addTicket(){
+
+  document.getElementById("addBtn").hidden = true;
 
   let amnt = document.getElementById("r_amount").value;
   let description = document.getElementById("r_description").value;
@@ -324,6 +350,9 @@ async function addTicket(){
 
   if(resp.status === 201){
     console.log("reimbursement added");
+    let msg = document.getElementById("message");
+    msg.style = "color:green;";
+    msg.innerHTML = "Ticket successfully added!";
   }
 
 }

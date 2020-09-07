@@ -13,7 +13,7 @@
         </script>
   </head>
   <body>
-    <h3 class="centered">Add a ticket for reimbursement</h3>
+    <h3 class="centered" id="message">Add a ticket for reimbursement</h3>
 
 
   <div class="centered">
@@ -33,14 +33,15 @@
 
   <div class="centered">
     <label for="r_description">Add a description</label><br>
-    <input type="text" class="form-control" id="r_description" required=true style="width: 200px;height: 100px;border-color:red;">
+    <!-- <input type="textarea" class="form-control" id="r_description"> -->
+    <textarea rows="8" cols="30" id="r_description"></textarea>
   </div>
 
 
   <div class="centered">
     <button type="button" id="addBtn" onclick="addTicket()" class="buttons">Add Ticket</button>
     <br><br>
-    <button type="button" id="cancelBtn" onclick="sendBackToHome()" class="buttons">Cancel</button>
+    <button type="button" id="cancelBtn" onclick="sendBackToHome()" class="buttons">Return</button>
   </div>
 
   <script src="functionality.js" charset="utf-8"></script>

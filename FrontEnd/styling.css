@@ -1,3 +1,12 @@
+p,label,button,table{
+  font-family: "Lucida Console",sans-serif;
+  font-size: 12px;
+}
+
+h1,h3{
+  font-family: "Lucida Console",sans-serif;
+}
+
 .buttons{
   border-radius: 16px;
   padding: 15px 30px;
@@ -5,7 +14,14 @@
   width: 100%;
   max-width:200px;
   margin: 5px;
+  /* position: fixed; */
+  /* left:0px; */
 
+}
+
+#ticketPreview{
+   border: 1px solid black; 
+   box-shadow: 2px 2px;
 }
 
 .ticketStyle{
@@ -21,6 +37,7 @@
 
 table, th{
   border: 1px solid black;
+
 
 }
 

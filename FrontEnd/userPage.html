@@ -15,9 +15,13 @@
   <body onload="getUsersName()">
 
     <div class="centered">
-      <p id="greeting"></p>
+      <h3 id="greeting"></h3>
+    </div>
       <!-- <button type="button" id="showMyTicketsBtn" onclick="showMyTickets()" class="buttons">Show my tickets</button> -->
+
       <button type="button" id="addBtn" onclick="sendToAddTicket()" class="buttons">Add new ticket</button>
+    </div>
+    <div>
       <button type="button" id="logoutBtn" onclick="logout()" class="buttons">Logout</button>
 
   </div>
@@ -28,7 +32,7 @@
       <button type="button" id="showMyTicketsBtn" onclick="showMyTickets()">Find</button>
   </div>
 
-      <div class="centered" id="ticketPreview" style="border: 1px solid black" hidden=true>
+      <div class="centered" id="ticketPreview" hidden=true>
       <p id="idNum" class="ticketStyle">ticket id</p>
       <p id="amount" class="ticketStyle">ticket amount</p>
       <p id="submitted" class="ticketStyle">ticket submitted</p>
