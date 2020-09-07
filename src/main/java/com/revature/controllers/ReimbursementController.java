@@ -4,6 +4,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.util.List;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -18,6 +22,7 @@ public class ReimbursementController {
 	private static UserService us = new UserService();
 	
 	private static ObjectMapper om = new ObjectMapper();
+	private static final Logger log = LogManager.getLogger(ReimbursementController.class);
 	
 	public void getReimbursement(HttpServletResponse res, int id) throws IOException{
 		om.configure(SerializationFeature.FAIL_ON_EMPTY_BEANS, false);
@@ -85,9 +90,11 @@ public class ReimbursementController {
 		if(rs.addReimbursement(r)) {
 			res.setStatus(201);
 			res.getWriter().println("Reimbursement Ticket created");
+			log.info("Ticket created: " + r);
 		}
 		else {
 			res.setStatus(403);
+			log.error("Unable to add ticket: " + r);
 		}
 	}
 	
@@ -121,12 +128,15 @@ public class ReimbursementController {
 		r.setR_status(rs.findStatusById(rdto.r_status));
 		r.setR_type(rs.findType(rdto.r_type));
 		
+		log.info("Request to update ticket: " + r);
 		
 		if(rs.updateReimbursement(r)) {
 			res.setStatus(202);
 			res.getWriter().println("Reimbursement Ticket updated");
+			log.info("Ticket successfully updated: " + r);
 		}
 		else {
+			log.error("Unable to update ticket: " + r);
 			res.setStatus(304);
 		}
 	}

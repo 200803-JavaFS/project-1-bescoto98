@@ -3,6 +3,10 @@ package com.revature.controllers;
 import java.io.BufferedReader;
 import java.io.IOException;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+
+
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.revature.models.LoginDTO;
@@ -18,6 +22,7 @@ public class LoginController {
 	private static LoginService ls = new LoginService();
 	private static ObjectMapper om = new ObjectMapper();
 	private static UserService us = new UserService();
+	private static final Logger log = LogManager.getLogger(LoginController.class);
 
 	public void login(HttpServletRequest req, HttpServletResponse res) throws IOException{
 		if(req.getMethod().equals("POST")) {
@@ -35,6 +40,7 @@ public class LoginController {
 			LoginDTO l = om.readValue(body,LoginDTO.class);
 			
 			if(ls.login(l)) {
+				log.info("Logged in: " + l.username);
 				HttpSession ses = req.getSession();
 				ses.setAttribute("user", l);
 				ses.setAttribute("loggedin", true);

@@ -17,7 +17,6 @@ public class MasterServlet extends HttpServlet {
 	
 	private static LoginController lc = new LoginController();
 	private static ReimbursementController rc = new ReimbursementController();
-	private static UserController uc = new UserController();
 	
 	public MasterServlet() {
 		super();
