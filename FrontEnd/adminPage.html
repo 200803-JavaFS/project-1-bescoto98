@@ -10,6 +10,10 @@
       window.location.replace("updateTicket.html");
     }
 
+    function sendToShowAll(){
+      window.location.replace("showAllTickets.html");
+    }
+
     </script>
   </head>
   <body onload="getUsersName()">
@@ -17,48 +21,30 @@
       <p id="greeting"></p>
     </div>
     <div class="centered">
-      <button type="button" id="showAllBtn" class="buttons" onclick="getAll()">Show reimbursements</button>
-      <br><br>
-      <button type="button" class="buttons" onclick="logout()">Logout</button>
-      <br><br>
-      <button type="button" class="buttons" onclick="sendToUpdateTicket()">Update ticket</button>
-
-    </div>
-    <br>
-    <br>
-    <div class="centered">
-
-      <div class="boolChecks">
-
-        <input type="checkbox" id="pendingbool" onclick="showPending()">
-        <label for="pendingbool">Show Pending tickets</label>
-        <br>
-        <input type="checkbox" id="approvedbool" onclick="showApproved()">
-        <label for="approvedbool">Show Approved tickets</label>
-        <br>
-        <input type="checkbox" id="deniedbool" onclick="showDenied()">
-        <label for="deniedbool">Show Denied tickets</label>
-
-      </div>
-
+      <button type="button" id="showAllBtn" class="buttons" onclick="sendToShowAll()">Show all tickets</button>
       <br>
-
-      <table id="allReimb">
-        <thead>
-          <tr>
-            <th>ID#</th>
-            <th>Amount</th>
-            <th>Submission Date</th>
-            <th>Resolution Date</th>
-            <th>Author</th>
-            <th>Status</th>
-          </tr>
-        </thead>
-        <tbody id="allReimbBody">
-        </tbody>
-      </table>
-
+      <button type="button" class="buttons" onclick="sendToUpdateTicket()">Update ticket</button>
+      <br>
+      <button type="button" class="buttons" onclick="logout()">Logout</button>
     </div>
+
+    <div class="centered">
+      <h3>Find a ticket</h3>
+        <input type="text" id="ticketIdNum" placeholder="Enter ticket id">
+        <button type="button" id="showMyTicketsBtn" onclick="showMyTickets()">Find</button>
+    </div>
+
+        <div class="centered" id="ticketPreview" style="border: 1px solid black" hidden=true>
+        <p id="idNum" class="ticketStyle">ticket id</p>
+        <p id="amount" class="ticketStyle">ticket amount</p>
+        <p id="submitted" class="ticketStyle">ticket submitted</p>
+        <p id="resolved" class="ticketStyle">resolved</p>
+        <p id="resolver" class="ticketStyle">ticket resolver</p>
+        <p id="status" class="ticketStyle">ticket status</p>
+        <p id="type" class="ticketStyle">ticket type</p>
+        <p id="description" class="ticketStyle">ticket description</p>
+        </div>
+
 
 
     <script src="functionality.js" charset="utf-8"></script>

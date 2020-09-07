@@ -12,6 +12,22 @@ function translateStatus(s){
   }
 }
 
+function translateType(t){
+  if(t == 1){
+    return "LODGING";
+  }
+  if(t == 2){
+    return "TRAVEL";
+  }
+  if(t == 3){
+    return "FOOD";
+  }
+  if(t == 4){
+    return "OTHER";
+  }
+
+}
+
 function showPending(){
   let status = document.getElementById("pendingbool");
   let tbl = document.getElementById("allReimb");
@@ -138,6 +154,10 @@ async function logout(){
 //return all reimbursement tickets
 async function getAll(){
 
+  // document.getElementById("boolChecks").hidden = false;
+  // document.getElementById("allReimb").hideen = false;
+
+
   let resp = await fetch(url + "reimbursement",{
     credentials:'include'
   });
@@ -146,8 +166,8 @@ async function getAll(){
     let data = await resp.json();
     console.log(data);
 
-    let btn = document.getElementById("showAllBtn");
-    btn.style.display = "none";
+    // let btn = document.getElementById("showAllBtn");
+    // btn.style.display = "none";
 
     let index = 1;
 
@@ -164,10 +184,13 @@ async function getAll(){
       let c5 = row.insertCell(5);
 
       c0.innerHTML = reimbursement.r_id;
-      c1.innerHTML = reimbursement.r_amnt;
+      c1.innerHTML = "$" + reimbursement.r_amnt;
       c2.innerHTML = reimbursement.r_submitted;
       if(reimbursement.r_resolved != null){
           c3.innerHTML = reimbursement.r_resolved;
+      }
+      else{
+        c3.innerHTML = "-"
       }
       c4.innerHTML = reimbursement.r_author;
       c5.innerHTML = translateStatus(reimbursement.r_status);
@@ -238,6 +261,33 @@ async function getUsersName(){
 }
 // employee functions
 async function showMyTickets(){
+
+  let tickId = document.getElementById("ticketIdNum").value;
+  let ticket = await getTicket(tickId);
+  console.log(ticket);
+  let user = await getUserDTO();
+  if(ticket.r_author == user.id || user.role == 0){
+    // window.location.replace("ticketPreview.html");
+    let t = document.getElementById("ticketPreview");
+    t.hidden=false;
+
+    document.getElementById("idNum").innerHTML = "Ticket ID#" + ticket.r_id;
+    document.getElementById("amount").innerHTML = "$" + ticket.r_amnt;
+    document.getElementById("submitted").innerHTML = "Submission Date: " + ticket.r_submitted;
+    if(ticket.r_resolved !=  null){
+      document.getElementById("resolved").innerHTML = "Resolution Date: " + ticket.r_resolved;
+      document.getElementById("resolver").innerHTML = "Resolved by Admin #"+ticket.r_resolver;
+    }
+    else{
+      document.getElementById("resolved").innerHTML = "Resolution Date: Ticket not resolved yet";
+      document.getElementById("resolver").innerHTML = "Resolved by: Ticket not resolved yet";
+    }
+
+    document.getElementById("status").innerHTML = "Ticket status: " + translateStatus(ticket.r_status);
+    document.getElementById("type").innerHTML = "Reimbursement type: " + translateType(ticket.r_type);
+    document.getElementById("description").innerHTML = "Description: " + ticket.r_description;
+
+  }
 
 
 }

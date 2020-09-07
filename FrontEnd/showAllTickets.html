@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>All tickets</title>
+    <link rel="stylesheet" href="styling.css">
+    <script>
+      function sendBackToHome(){
+        window.location.replace("adminPage.html");
+      }
+
+    </script>
+  </head>
+  <body onload="getAll()">
+    <div class="centered">
+
+      <button type="button" onclick="sendBackToHome()" class="buttons">Return</button>
+
+      <div class="boolChecks" id="boolChecks">
+
+        <input type="checkbox" id="pendingbool" onclick="showPending()">
+        <label for="pendingbool">Show Pending tickets</label>
+        <br>
+        <input type="checkbox" id="approvedbool" onclick="showApproved()">
+        <label for="approvedbool">Show Approved tickets</label>
+        <br>
+        <input type="checkbox" id="deniedbool" onclick="showDenied()">
+        <label for="deniedbool">Show Denied tickets</label>
+
+      </div>
+
+      <br>
+
+      <table id="allReimb">
+        <thead>
+          <tr>
+            <th>ID#</th>
+            <th>Amount</th>
+            <th>Submission Date</th>
+            <th>Resolution Date</th>
+            <th>Author</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="allReimbBody">
+        </tbody>
+      </table>
+
+    </div>
+
+    <script src="functionality.js" charset="utf-8"></script>
+  </body>
+</html>
