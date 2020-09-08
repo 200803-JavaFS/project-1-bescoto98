@@ -32,80 +32,36 @@ function translateType(t){
 function getToday(){
 
   let d = new Date();
-  let fullDay = d.getMonth() + "-" + d.getDate() + "-" + d.getFullYear();
+  let fullDay = (d.getMonth() + 1) + "-" + d.getDate() + "-" + d.getFullYear();
 
   return fullDay;
 }
+
+function filter(){
+  let pending = document.getElementById("pendingbool");
+  let approved = document.getElementById("approvedbool");
+  let denied = document.getElementById("deniedbool");
+
+  let tbl = document.getElementById("allReimb");
+  let rows = tbl.rows;
+
+  for(let i = 1; i < rows.length; i++){
+
+    rows[i].style.display = "none";
+
+    let val = rows[i].getElementsByTagName("td")[5].innerText;
+    if(pending.checked && val.includes("PENDING")){
+      rows[i].style.display = "table-row";
+    }
+    if(approved.checked && val.includes("APPROVED")){
+      rows[i].style.display = "table-row";
+    }
+    if(denied.checked && val.includes("DENIED")){
+      rows[i].style.display = "table-row";
+    }
+  }
+}
 /** END HELPER FUNCTIONS **/
-
-/** FILTER FUNCTIONS **/
-function showPending(){
-
-  let status = document.getElementById("pendingbool");
-  let tbl = document.getElementById("allReimb");
-  let rows = tbl.rows;
-
-  if(status.checked){
-      for(let i = 1; i < rows.length; i++){
-        if(rows[i].getElementsByTagName("td")[5].innerText.includes("APPROVED")
-        || rows[i].getElementsByTagName("td")[5].innerText.includes("DENIED")){
-        rows[i].style.display = "none";
-      }
-    }
-  }
-  else {
-    for(let i = 1; i < rows.length; i++){
-      rows[i].style.display = "table-row";
-    }
-
-  }
-
-}
-
-function showApproved(){
-
-    let status = document.getElementById("approvedbool");
-    let tbl = document.getElementById("allReimb");
-    let rows = tbl.rows;
-
-    if(status.checked){
-        for(let i = 1; i < rows.length; i++){
-          if(rows[i].getElementsByTagName("td")[5].innerText.includes("PENDING")
-          || rows[i].getElementsByTagName("td")[5].innerText.includes("DENIED")){
-          rows[i].style.display = "none";
-        }
-      }
-    }
-    else {
-      for(let i = 1; i < rows.length; i++){
-        rows[i].style.display = "table-row";
-      }
-
-    }
-
-}
-
-function showDenied(){
-  let status = document.getElementById("deniedbool");
-  let tbl = document.getElementById("allReimb");
-  let rows = tbl.rows;
-
-  if(status.checked){
-      for(let i = 1; i < rows.length; i++){
-        if(rows[i].getElementsByTagName("td")[5].innerText.includes("APPROVED")
-        || rows[i].getElementsByTagName("td")[5].innerText.includes("PENDING")){
-        rows[i].style.display = "none";
-      }
-    }
-  }
-  else {
-    for(let i = 1; i < rows.length; i++){
-      rows[i].style.display = "table-row";
-    }
-
-  }
-}
-/** END FILTER FUNCTIONS**/
 
 
 /** SHARED FUNCTIONS **/
@@ -192,7 +148,7 @@ async function showMyTickets(){
   if(document.contains(document.getElementById("errorMsg"))){
     document.getElementById("errorMsg").remove();
   }
-  
+
   let tickId = document.getElementById("ticketIdNum").value;
   let ticket = await getTicket(tickId);
 
@@ -229,6 +185,11 @@ async function showMyTickets(){
     document.getElementById("description").innerHTML = "Description: " + ticket.r_description;
 
   }
+  else{
+    let errorMsg = document.createElement("div");
+    errorMsg.innerHTML = '<h3 class="centered" style="color:red;" id="errorMsg">Unable to access that ticket</h3>';
+    document.body.appendChild(errorMsg);
+  }
 
 
 }
@@ -247,11 +208,18 @@ async function getAll(){
   if(resp.status === 200){
     let data = await resp.json();
 
+    let user = await getUserDTO();
+
     let index = 1;
 
     let tbl = document.getElementById("allReimb");
 
     for(let reimbursement of data){
+
+      if(user.role == 1 && reimbursement.r_author != user.id){
+
+        continue;
+      }
 
       let row = tbl.insertRow(index);
       let c0 = row.insertCell(0);

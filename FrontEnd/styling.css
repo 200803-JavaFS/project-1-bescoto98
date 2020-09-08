@@ -31,14 +31,11 @@ td{
 .buttons{
   border-radius: 16px;
   padding: 15px 30px;
-  /* height: 15px; */
   width: 100%;
   max-width:200px;
   margin: 5px;
   background-color: #99d6ff;
   border-color: blue;
-  /* position: fixed; */
-  /* left:0px; */
 
 }
 
