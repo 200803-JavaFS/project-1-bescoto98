@@ -76,3 +76,9 @@
 2020-09-07 17:24:26 INFO  LoginController:43 - Logged in: mabelle33
 2020-09-07 17:25:18 INFO  LoginController:43 - Logged in: flowers99
 2020-09-07 17:26:05 INFO  ReimbursementController:82 - Ticket created: Reimbursement [r_id=10, r_amnt=250.0, r_submitted=9-7-2020, r_resolved=null, r_description=Coworker started a fire at my house. Covers the expenses at the best motel in town., r_author=User [u_id=2, u_username=flowers99, u_password=4813494d137e1631bba301d5acab6e7bb7aa74ce1185d456565ef51d737677b2, u_fn=Maria, u_ln=Flowers, u_email=flowers@gmail.com, u_user_role=U_Role [ur_id=1, ur_description=EMPLOYEE]], r_resolver=null, r_status=Status [s_id=1, s_description=PENDING], r_type=R_Type [rt_id=1, rt_type=LODGING]]
+2020-09-08 08:51:20 INFO  LoginController:43 - Logged in: mabelle33
+2020-09-08 08:52:17 INFO  LoginController:43 - Logged in: flowers99
+2020-09-08 09:19:41 INFO  LoginController:43 - Logged in: jack56
+2020-09-08 09:21:23 INFO  LoginController:43 - Logged in: jack56
+2020-09-08 09:23:58 INFO  LoginController:43 - Logged in: jack56
+2020-09-08 09:24:14 INFO  LoginController:43 - Logged in: mabelle33

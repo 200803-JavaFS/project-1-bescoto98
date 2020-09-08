@@ -194,6 +194,17 @@ async function showMyTickets(){
 
 }
 
+async function fromShowAllToHome(){
+  let user = await getUserDTO();
+  if(user.role == 0){
+      window.location.replace("adminPage.html");
+  }
+  else{
+    window.location.replace("userPage.html");
+  }
+
+}
+
 /** END SHARED FUNCTIONS **/
 
 /** ADMIN FUNCTIONS **/
