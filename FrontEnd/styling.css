@@ -64,7 +64,8 @@ td{
    box-shadow: 2px 2px;
 }
 
-/*slider on update page code--most of the it comes from W3 Schools*/
+/*slider on update page code*/
+/*https://www.w3schools.com/howto/howto_css_switch.asp*/
 
 .switch {
   position: relative;
